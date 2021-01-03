@@ -15,8 +15,16 @@ class Projectile {
     xPos+=xVel;
     // yPos=ySize-100;
     if (projectileLaunched) {
-      yPos = ySize-100 +(yVel*(millis()-timeOffset)/1000)+(.5*accel*pow((millis()-timeOffset)/1000, 2));
+      rocket.yPos = ySize-100 +(yVel*(millis()-timeOffset)/1000)+(.5*accel*pow((millis()-timeOffset)/1000, 2));
       System.out.println(yVel +", "+ yPos +", "+ xPos +", "+ (millis()-timeOffset)/1000);
+    
+    if(millis()>=(timeOffset+1000)){
+      System.out.println("fire");
+      intercept.setXvel(rocket.getXvel() + (110-750)/((millis()-timeOffset)/1000)/10);//v0x1 + (s0x1-s0x2)/t = v0x2
+      intercept.setYvel(rocket.getYvel() - (110-750)/((millis()-timeOffset)/1000)/10);//v0x1 + (s0x1-s0x2)/t = v0x2
+      intercept.xPos+=intercept.xVel;
+      intercept.yPos+=intercept.yVel;
+  }
     }
     circle((int)xPos, (int)yPos, 20);
   }
@@ -31,5 +39,11 @@ class Projectile {
   }
   private int getXpos() {
     return (int)xPos;
+  }
+   private double getXvel() {
+    return xVel;
+  }
+   private double getYvel() {
+    return yVel;
   }
 }

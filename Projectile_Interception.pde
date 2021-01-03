@@ -6,7 +6,6 @@ Projectile rocket = new Projectile(110, ySize-100, 0, 0);
 Projectile intercept = new Projectile(750,750,0,0);
 void setup() {
   size(1500, 800);
-  intercept.update();
 }
 
 void draw() {
@@ -17,8 +16,7 @@ void draw() {
   if (!projectileLaunched)line(rocket.getXpos(), rocket.getYpos(), mouseX, mouseY);
 
   rocket.update();
-  
-  if(interceptLaunched)intercept.update();
+  intercept.update();
   fill(255,0,0);
   circle(750,800,40);
 }
@@ -29,4 +27,5 @@ void mouseClicked() {
   rocket.setYvel(((ySize-100)-mouseY)*5);
   timeOffset = millis();
   System.out.println("Set Projectile velocity to "+rocket.xVel+", "+rocket.yVel);
+
 }
