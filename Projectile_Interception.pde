@@ -14,9 +14,16 @@ void draw() {
   rect(100, ySize-85, 25, 100);
   
   if (!projectileLaunched)line(rocket.getXpos(), rocket.getYpos(), mouseX, mouseY);
+  if(projectileLaunched&&!interceptLaunched){
+      System.out.println("fire");
+      interceptLaunched=true;
+      intercept.setXvel(rocket.getXvel() + (110-750)/((millis()-timeOffset)/1000)/10);//v0x1 + (s0x1-s0x2)/t = v0x2
+      intercept.setYvel(rocket.getYvel() + (110-750)/((millis()-timeOffset)/1000)*5);//v0x1 + (s0x1-s0x2)/t = v0x2
+      
+  }
 
   rocket.update();
-  intercept.update();
+  if(interceptLaunched)intercept.update();
   fill(255,0,0);
   circle(750,800,40);
 }
