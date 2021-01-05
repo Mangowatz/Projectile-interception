@@ -17,7 +17,7 @@ class Projectile {
     
     if (projectileLaunched) {
       yPos = yInit +(yVel*(millis()-timeOffset)/1000)+(.5*accel*pow((millis()-timeOffset)/1000, 2));
-      System.out.println(yVel +", "+ yPos +", "+ xPos +", "+ (millis()-timeOffset)/1000);  
+      System.out.println(xVel +", "+yVel +", "+ yPos +", "+ xPos +", "+ (millis()-timeOffset)/1000);  
   xPos+=xVel;
     }
     circle((int)xPos, (int)yPos, 20);
