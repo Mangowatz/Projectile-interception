@@ -40,4 +40,10 @@ class Projectile {
    private double getYvel() {
     return yVel;
   }
+  private double getXinit() {
+    return xInit;
+  }
+   private double getYinit() {
+    return yInit;
+  }
 }
