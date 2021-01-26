@@ -1,7 +1,7 @@
 
 class Projectile {
   double xPos, yPos, xVel, yVel, size,xInit, yInit = 0;
-
+  boolean isLaunched=false;
   double accel = 200; //measured in pixles/second
 
   public Projectile(double xPos, double yPos, double xVel, double yVel) {
@@ -15,10 +15,10 @@ class Projectile {
   }
   private void update() {
     
-    if (projectileLaunched) {
+    if (isLaunched) {
       yPos = yInit +(yVel*(millis()-timeOffset)/1000)+(.5*accel*pow((millis()-timeOffset)/1000, 2));
       System.out.println(xVel +", "+yVel +", "+ yPos +", "+ xPos +", "+ (millis()-timeOffset)/1000);  
-  xPos+=xVel;
+      xPos+=xVel;
     }
     circle((int)xPos, (int)yPos, 20);
   }
@@ -45,5 +45,12 @@ class Projectile {
   }
    private double getYinit() {
     return yInit;
+  }
+   private boolean getLaunchStatus() {
+    return isLaunched;
+  }
+  private void setLaunchStatus(boolean launch){
+    isLaunched = launch;
+    System.out.println("Status: "+ isLaunched);
   }
 }
